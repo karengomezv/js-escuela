@@ -76,7 +76,7 @@ exports.findByClave = async function (key) {
 }
 
 
-exports.add = async function (key, name, credits) { //post
+exports.add = async function (key, name, credits) { 
     let course = await db.Curso.create({
         clave: key,
         nombre: name,
