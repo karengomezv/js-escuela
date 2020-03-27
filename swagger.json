@@ -1,0 +1,428 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "A continuación se presenta una API escolar",
+    "version": "1.0.0",
+    "title": "Escuela",
+    "termsOfService": "http://swagger.io/terms/"
+  },
+  "tags": [
+    {
+      "name": "estudiante",
+      "description": "Información sobre los estudiantes"
+    },
+    {
+      "name": "curso",
+      "description": "Información sobre los cursos"
+    }
+  ],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/estudiantes": {
+      "post": {
+        "tags": [
+          "estudiante"
+        ],
+        "summary": "Agregue un nuevo estudiante",
+        "description": "",
+        "operationId": "createEstudiante",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Objeto Estudiante que debe ser añadido",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Estudiante"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "estudiante"
+        ],
+        "summary": "Actualice un estudiante existente",
+        "description": "",
+        "operationId": "updateEstudiante",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Objeto Estudiante que debe ser añadido",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Estudiante"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Estudiante no enontrado"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        }
+      }
+    },
+    "/cursos": {
+      "post": {
+        "tags": [
+          "curso"
+        ],
+        "summary": "Agregue un nuevo curso",
+        "description": "",
+        "operationId": "createCurso",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Objeto Curso que debe ser añadido",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Curso"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "curso"
+        ],
+        "summary": "Actualice un curso existente",
+        "description": "",
+        "operationId": "updateCurso",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Objeto Curso que debe ser actualizado",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Curso"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Curso no enontrado"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        }
+      }
+    },
+    "/cursos/{cursoId}": {
+      "get": {
+        "tags": [
+          "curso"
+        ],
+        "summary": "Consulte a un curso por id",
+        "operationId": "getCursoId",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "cursoId",
+            "in": "path",
+            "description": "Status values that need to be considered for filter",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "integer",
+              "items": {
+                "$ref": "#/definitions/Curso"
+              }
+            }
+          },
+          "400": {
+            "description": "id inválida"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "curso"
+        ],
+        "summary": "Eliminar curso",
+        "description": "",
+        "operationId": "deleteCurso",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "api_key",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "cursoId",
+            "in": "path",
+            "description": "Id de curso a eliminar",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "id inválida"
+          },
+          "404": {
+            "description": "No se encontró curso"
+          }
+        }
+      }
+    },
+    "/estudiantes/{estudianteId}": {
+      "get": {
+        "tags": [
+          "estudiante"
+        ],
+        "summary": "Consulte a un estudiante por id",
+        "operationId": "getEstudianteId",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "estudianteId",
+            "in": "path",
+            "description": "Status values that need to be considered for filter",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "integer",
+              "items": {
+                "$ref": "#/definitions/Estudiante"
+              }
+            }
+          },
+          "400": {
+            "description": "id inválida"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:estudiantes",
+              "read:estudiantes"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "estudiante"
+        ],
+        "summary": "Eliminar estudiante",
+        "description": "",
+        "operationId": "deleteEstudiante",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "api_key",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "estudianteId",
+            "in": "path",
+            "description": "Id de estudiante a eliminar",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "id inválida"
+          },
+          "404": {
+            "description": "No se encontró estudiante"
+          }
+        }
+      }
+    },
+    "/cursos/": {
+      "get": {
+        "tags": [
+          "curso"
+        ],
+        "summary": "Listado de todos los cursps",
+        "description": "Regresa un listado de los cursos",
+        "operationId": "getAllCursos",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/estudiantes/": {
+      "get": {
+        "tags": [
+          "estudiante"
+        ],
+        "summary": "Listado de todos los estudiantes",
+        "description": "Regresa un listado de los estudiantes",
+        "operationId": "getAllEstudiantes",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Estudiante": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        
+        "nommbre": {
+          "type": "string"
+        },
+        "matricula": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "semestreIngreso": {
+          "type": "string"
+        },
+        "creditosCursados": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "xml": {
+        "name": "Estudiante"
+      }
+    },
+    "Curso": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        
+        "nombre": {
+          "type": "string"
+        },
+        "clave": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "creditos": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "xml": {
+        "name": "Curso"
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}
