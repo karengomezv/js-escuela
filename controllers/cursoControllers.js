@@ -33,7 +33,7 @@ function createCurso(req, res) {
 }
 function updateCurso(req, res) {
     cursos.save(req.body.nombre, req.body.clave, req.body.creditos, req.params.id).then((cursos) => {
-        res.status(200).send('Actualización realizada');
+        res.status(200).send('Actualización exitosa');
     }).catch(err => {
         res.status(400).send(err);
     });
@@ -41,7 +41,7 @@ function updateCurso(req, res) {
 
 function deleteCurso(req, res) {
     cursos.delete(req.params.id).then((cursos) => {
-        res.status(200).send('Eliminación realizada');
+        res.status(200).send('Eliminación exitosa');
     }).catch(err => {
         res.status(400).send(err)
     });
