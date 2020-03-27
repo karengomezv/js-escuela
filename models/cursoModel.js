@@ -50,8 +50,8 @@ inscritosId = async function (value) {
         where: {
             id: value
         }
-    }); //obtengo el id del curso
-    return course[0].getEstudiantes(); //obtengo los estudiantes que están inscritos a ese curso
+    }); 
+    return course[0].getEstudiantes(); 
 }
 
 exports.findByClave = async function (key) {
